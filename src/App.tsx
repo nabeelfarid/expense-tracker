@@ -1,5 +1,5 @@
 import './App.css';
-import TransactionManager from "./TransactionManager"
+import TransactionManager from "./Components/TransactionManager"
 import Header from "./Components/Header"
 import Balance from "./Components/Balance"
 import IncomeExpense from './Components/IncomeExpense';

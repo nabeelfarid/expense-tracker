@@ -2,12 +2,12 @@ import { createContext } from "react";
 import { Transaction } from "./Transaction";
 import { defaultTransactions } from "./defaultTransactions";
 
-export interface TransactionContextType {
+export interface ITransactionContextType {
     transactions: Transaction[];
-    actions: TransactonActions;
+    actions: ITransactonActions;
 };
 
-export type TransactonActions = {
+export interface ITransactonActions {
     addTransaction : (tran : Transaction) => void,
     deleteTransaction : (id : number) => void,
     calculateBalance : () => string,
@@ -15,7 +15,7 @@ export type TransactonActions = {
     calculateExpenses: () => string
 } 
 
-export const TransactionContext = createContext<TransactionContextType>({
+export const TransactionContext = createContext<ITransactionContextType>({
     transactions: defaultTransactions,
     actions : {
         addTransaction : () => {},

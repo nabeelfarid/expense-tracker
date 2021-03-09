@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { TransactionContext } from "../TransactionManager";
+import { TransactionContext } from "./TransactionManager";
 
 const IncomeExpense : React.FC = () => {
     
