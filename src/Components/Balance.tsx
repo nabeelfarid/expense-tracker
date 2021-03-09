@@ -1,10 +1,9 @@
 import { useContext } from 'react';
-import { ITransactionContextType } from "../Models/TransactionContext";
-import { TransactionContext } from "./TransactionManager";
+import TransactionContext, {TransactionContextType} from "../Models/TransactionContext";
 
 const Balance = () =>
 {
-    const {actions} = useContext<ITransactionContextType>(TransactionContext);
+    const {actions} = useContext<TransactionContextType>(TransactionContext);
     
     return (
     <div className="balance">

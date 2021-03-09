@@ -1,26 +1,26 @@
 import { useReducer } from "react";
-import { Transaction } from "../Models/Transaction";
-import { defaultTransactions } from "../Models/defaultTransactions";
+import Transaction from "../Models/Transaction";
 import TransactionReducer from "../Models/TransactionReducer";
-import { TransactionActionType } from "../Models/TransactionActionType";
-import TransactionContext, { } from "../Models/TransactionContext";
+import TransactionActionTypes from "../Models/TransactionActionTypes";
+import TransactionContext from "../Models/TransactionContext";
+import DefaultTransactions from "../Models/DefaultTransactions";
 
 const TransactionManager: React.FC = ({ children }) => {
 
-    const [transactions, dispatch] = useReducer(TransactionReducer, defaultTransactions);
+    const [transactions, dispatch] = useReducer(TransactionReducer, DefaultTransactions);
 
     function addTransaction(tranObj: Transaction) {
         //generate new transaction id by incrementing last transactionid
         const newId = transactions.length == 0 ? 0 : transactions[0].id + 1;
         dispatch({
-            type: TransactionActionType.ADD_TRANSACTION,
+            type: TransactionActionTypes.ADD_TRANSACTION,
             payload: { ...tranObj, id: newId }
         });
     }
 
     function deleteTransaction(tranId: number) {
         dispatch({
-            type: TransactionActionType.DELETE_TRANSACTION,
+            type: TransactionActionTypes.DELETE_TRANSACTION,
             payload: tranId
         });
     }

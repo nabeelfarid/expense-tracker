@@ -1,19 +1,19 @@
 import { Reducer } from "react";
-import { Transaction } from "./Transaction";
-import { TransactionActionType } from "./TransactionActionType";
+import Transaction from "./Transaction";
+import TransactionActionTypes from "./TransactionActionTypes";
 
 type TransactionReducerAction = {
-    type: TransactionActionType,
+    type: TransactionActionTypes,
     payload: Transaction | number
 }
 
 const TransactionReducer: Reducer<Transaction[], TransactionReducerAction> = (state, action) => {
     switch (action.type) {
-        case TransactionActionType.ADD_TRANSACTION: {
+        case TransactionActionTypes.ADD_TRANSACTION: {
 
             return [action.payload as Transaction, ...state];
         }
-        case TransactionActionType.DELETE_TRANSACTION: {
+        case TransactionActionTypes.DELETE_TRANSACTION: {
 
             return state.filter((trans) => { return trans.id != action.payload });
         }
@@ -24,4 +24,3 @@ const TransactionReducer: Reducer<Transaction[], TransactionReducerAction> = (st
 }
 
 export default TransactionReducer;
-export { TransactionActionType as TransactionActionTypes }
