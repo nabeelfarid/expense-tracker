@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { TransactionContext } from "./TransactionManager";
+import { TransactionContext } from "../TransactionManager";
 
-const History = () => {
+const History : React.FC = () => {
     
     const {transactions, actions} = useContext(TransactionContext);
     
@@ -10,7 +10,7 @@ const History = () => {
         <h3>History</h3>
         <hr />
         <ul className="transaction-list">
-            {transactions.map((trans, index) => {
+            {transactions.map((trans) => {
                 
                 return (
                     <li key={trans.id}>

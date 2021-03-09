@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { TransactionContext } from "./TransactionManager";
+import { TransactionContext } from "../TransactionManager";
 
-const IncomeExpense = () => {
+const IncomeExpense : React.FC = () => {
     
     const {actions} = useContext(TransactionContext);
     

@@ -1,30 +1,27 @@
-import { createContext, useReducer } from "react";
-import TransactionReducer, {TransactionActionTypes} from "./TransactionReducer";
+import { useReducer } from "react";
+import { Transaction } from "./Transaction";
+import { defaultTransactions } from "./defaultTransactions";
+import TransactionReducer from "./TransactionReducer";
+import { TransactionActionType } from "./TransactionActionType";
+import { TransactonActions } from "./TransactionContext";
+import TransactionContext, {  } from "./TransactionContext";
 
-const defaultTransactions = [
-    { id: 3, description: "Cash", amount: 5000 },
-    { id: 2, description: "Book", amount: -40 },
-    { id: 1, description: "Camera", amount: -200 }
-];
-
-const TransactionContext = createContext();
-
-
-const TransactionManager = ({ children }) => {
+const TransactionManager : React.FC = ({ children }) => {
+    
     const [transactions, dispatch] = useReducer(TransactionReducer, defaultTransactions);
 
-    function addTransaction(tranObj) {
+    function addTransaction(tranObj : Transaction) {
         //generate new transaction id by incrementing last transactionid
         const newId = transactions.length == 0 ? 0 : transactions[0].id + 1;
         dispatch({
-            type: TransactionActionTypes.ADD_TRANSACTION,
-            payload: { id:newId, ...tranObj}
+            type: TransactionActionType.ADD_TRANSACTION,
+            payload: {...tranObj, id:newId}
         });
     }
 
-    function deleteTransaction(tranId) {
+    function deleteTransaction(tranId : number) {
         dispatch({
-            type: TransactionActionTypes.DELETE_TRANSACTION,
+            type: TransactionActionType.DELETE_TRANSACTION,
             payload: tranId
         });
     }
@@ -50,7 +47,7 @@ const TransactionManager = ({ children }) => {
         return (expenses * -1).toFixed(2);
     }
 
-    const actions = {
+    const actions : TransactonActions = {
         addTransaction,
         deleteTransaction,
         calculateBalance,

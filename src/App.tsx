@@ -1,10 +1,10 @@
 import './App.css';
 import TransactionManager from "./TransactionManager"
-import Header from "./Header"
-import Balance from "./Balance"
-import IncomeExpense from './IncomeExpense';
-import History from './History';
-import AddTransaction from './AddTransaction';
+import Header from "./Components/Header"
+import Balance from "./Components/Balance"
+import IncomeExpense from './Components/IncomeExpense';
+import History from './Components/History';
+import AddTransaction from './Components/AddTransaction';
 
 function App() {
   return (
