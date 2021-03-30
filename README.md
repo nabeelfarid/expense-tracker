@@ -1,4 +1,4 @@
-QUIZ App URL: https://expensetracker.nabeelfarid.surge.sh/
+Expense Tracker App URL: https://expensetracker.nabeelfarid.surge.sh/
 
 # Getting Started with Create React App
 
