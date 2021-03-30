@@ -1,30 +1,26 @@
-import './App.css';
-import TransactionManager from "./TransactionManager"
-import Header from "./Header"
-import Balance from "./Balance"
-import IncomeExpense from './IncomeExpense';
-import History from './History';
-import AddTransaction from './AddTransaction';
+import "./App.css";
+import { useReducer } from "react";
+import TransactionReducer from "./TransactionReducer";
+import DefaultTransactions from "./DefaultTransactions";
+import TransactionContext from "./TransactionContext";
+import Main from "./Main";
 
-function App() {
-  return (
-    <TransactionManager>
-      <div className="container">
-
-        <Header/>
-
-        <Balance/>
-
-        <IncomeExpense/>
-
-        <History/>
-
-        <AddTransaction/>
-
-      </div>
-    </TransactionManager>
-
+const App = () => {
+  const [transactions, dispatch] = useReducer(
+    TransactionReducer,
+    DefaultTransactions
   );
-}
+
+  return (
+    <TransactionContext.Provider
+      value={{
+        transactions,
+        dispatch,
+      }}
+    >
+      <Main />
+    </TransactionContext.Provider>
+  );
+};
 
 export default App;
